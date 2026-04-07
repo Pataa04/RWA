@@ -1,0 +1,227 @@
+body {
+	background-color: white;
+	display: flex;	/* Omogucuje da "djecu" lakse rasporedjujemo unutar njega*/
+	flex-wrap: wrap; /* Ovo omogućava da main i aside stanu u isti red */
+}
+
+header {
+	background-color: #1A1A1B;
+	color: white;
+	height: 150px;
+	box-sizing: border-box;
+	width: 100%;
+	position: relative; /* Postavimo ga da nam djetetu tj. slici zada granice*/
+}
+
+.tekst{
+	text-align: right;
+	padding-right: 100px;
+	padding-top: 30px;
+	animation-name: textAnimacija;
+	animation-duration: 5s;
+	animation-fill-mode: forwards;
+	z-index: 1;
+}
+
+ul {
+	margin-top: 50px;	/* Razmak između od glavnog teksta */
+}
+
+ul li{
+	margin-bottom: 10px;	/* Razmak izmedu točaka */
+	text-align: left;	/* Da se približi točki */
+}
+
+li h3, li p{
+	display: inline; /* Ukida "block" ponašanje */
+	margin-right: 5px; 	/* Razmak izmedu h3 i p */
+}
+
+nav {
+	background-color: #2D2D30;
+	color: white;
+	text-align: center;
+	height: 80px;
+	box-sizing: border-box;
+	padding: 20px;
+	width: 100%;
+}
+
+main {
+	background-color: #FFFFFF;
+	box-sizing: border-box;		/* Da nam text ne gura bordere */
+	width: 80%;
+	height: 60vh;
+	text-align: center;
+	color: black;	
+}
+
+main p{
+	text-align: left;
+	padding-left: 30px;
+	font-size: 20px;
+}
+
+aside {
+	background-color: #95A5BD;
+	box-sizing: border-box;
+	text-align: center;
+	position: relative;	/* Pomjera se u odnosu na pocetnu poziciju */
+	width: 20%;
+	color: white;
+	padding-top: 180px;
+	color: white;
+}
+
+footer {
+	background-color: #1A1A1B;
+	text-align: center;
+	color: white;
+	padding: 30px;
+	box-sizing: border-box;
+	width: 100%;
+	height: 15vh;
+	font-size: 20px;
+}
+
+@keyframes fadeoutAnimacija{
+	0% { opacity: 1; }
+	50% { opacity: 0.5; }
+	75% { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+@keyframes logoAnimacija{
+	0% { transform: translateX(0px); }
+	100% { transform: translateX(1130px); }
+}
+
+@keyframes textAnimacija{
+	0% { transform: translateX(0px); }
+	100% { transform: translateX(-900px); }
+}
+
+.emojis{
+	color: initial;	/* Ostavlja prirodnu boji emojia */
+	margin-right: 5px;
+}
+
+.sum-slika {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	animation-name: fadeoutAnimacija;
+	animation-duration: 5s;
+	animation-iteration-count: infinite;
+}
+
+.logo {
+	height: 100%;
+	width: 25%;
+	position: absolute;	/* Da nam slika bude slobodna*/
+	left: 0px;	/* Da se ne odvaja od ruba */
+	top: 0px;
+	animation-name: logoAnimacija;
+	animation-duration: 5s;
+	animation-fill-mode: forwards;	/* Kad logo ide s lijeva na desno da ostane na desnoj strani */
+	z-index: 2;
+}
+
+.nav-linkovi{
+	display: flex;	/* Da se slažu jedno pored drugog */
+	list-style: none;	/* Micemo tockice*/
+	margin: 0;	/* Centriramo */
+	padding: 0;		/* Centriramo */	
+}
+
+.nav-linkovi li{
+	margin:0 20px;	/* Razmak između teksta*/
+}
+
+.nav-linkovi li a {
+	font-size: 20px;
+}
+
+.nav-linkovi li a:hover {	/* Za animacije na dodir */
+	color: blue;
+	text-decoration: underline;
+}
+
+@media screen and (max-width: 1500px){
+	.sum-slika, .logo, .tekst{
+		animation: none !important;
+		/* Prekidamo animacije na mobitelu */
+		left: 0 !important; 
+		right: 0 !important;
+		opacity: 1 !important;
+	 }
+}
+
+@media screen and (max-width: 768px){
+	 
+	 ul {
+		margin-top: 20px;	/* Razmak između od glavnog teksta */
+	}
+	 
+	 .nav-linkovi li {
+		 margin: 0 15px;
+	 }
+	 
+	 .nav-linkovi li a {
+		 font-size: 15px;
+	 }
+	 
+	 .sum-slika, .logo, .tekst{
+		animation: none !important;
+		/* Prekidamo animacije na mobitelu */
+		left: 0 !important; 
+		right: 0 !important;
+		opacity: 1 !important;
+	 }
+	 
+	 .sum-slika{
+		height: 100px;
+		width: 50%;
+	 }
+	 
+	 .logo{
+		 width: 40%;
+	 }
+	 
+	 .tekst{
+		 padding-left: 60%;
+		 font-size: 20px;
+	 }
+	 
+	 header{
+		 order: 1;
+		 width: 100%;
+	 }
+	 
+	 main{
+		 order: 2;
+		 height: 52vh;
+		 width: 100%;
+		 padding: 20px;
+	 }
+	 
+	 nav{
+		 order: 3;
+		 width: 100%;
+		 padding: 0;
+	 }
+	 
+	 aside{
+		 padding: 50px;
+		 position: relative;
+		 order: 4;
+		 width: 100%;
+	 }
+	 
+	 footer{
+		 order: 5;
+		 width: 100%;
+	 }
+}
